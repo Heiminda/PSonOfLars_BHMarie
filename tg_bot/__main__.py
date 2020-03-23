@@ -20,26 +20,24 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
-the things I can help you with.
+I'm a feature packed group management bot made with love and awesome looks of Sonia! 
 
-*Main* commands available:
- - /start: start the bot
- - /help: PM's you this message.
- - /help <module name>: PM's you info about that module.
- - /donate: information about how to donate!
- - /settings:
-   - in PM: will send you your settings for all supported modules.
-   - in a group: will redirect you to pm, with all that chat's settings.
+*Some basic commands*:
+ ► /start: To start the bot
+ ► /help: To PM you this message.
+ ► /help <module name>: PM you info about that module.
+ ► /donate: I don't run utilising your brain power or using perpetual energy. So donate to pay VPS server that host me if I am in your group.
+ ► /settings:
+   - in PM: will send you settings for all supported modules.
+   - in a group: will redirect you to pm and show all your chat's settings.
 
 {}
-And the following:
+And features shown:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
-It took lots of work for [my creator](https://telegram.dog/SonOfLars) to get me to where I am now, and every donation helps \
-motivate him to make me even better. All the donation money will go to a better VPS to host me, and/or beer \
-(see his bio!). He's just a poor student, so every little helps!"""
+DONATE_STRING = """Hey, I am glad to that you decided to donate!
+All the donation goes to pay VPS server that host me. Use my email ID vivekpalvim7@gmail.com through [Paypal](https://www.paypal.com) or [Neteller}(https://www.neteller.com) to donate.
+I wouldn't exist if it wasn't because of work of this [cool person](https://telegram.dog/SonOfLars)"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -134,10 +132,11 @@ def start(bot: Bot, update: Update, args: List[str]):
             first_name = update.effective_user.first_name
             update.effective_message.reply_text(
                 # PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
-                "no one gonna help you 🤣🤣🤣🤣",
-                parse_mode=ParseMode.MARKDOWN)
+                parse_mode=ParseMode.MARKDOWN),
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Add me to group",
+                                                                       url="t.me/{}?startgroup=true".format(bot.username))]]))
     else:
-        update.effective_message.reply_text("no one gonna help you 🤣🤣🤣🤣")
+        update.effective_message.reply_text("Hey there, PM me if you have any questions on how to use me!")
 
 
 # for test purposes
