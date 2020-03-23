@@ -39,7 +39,7 @@ def check_flood(bot: Bot, update: Update) -> str:
 
     try:
         bot.restrict_chat_member(chat.id, user.id, can_send_messages=False, until_date=mutetime)
-        msg.reply_text("ഫ്ലഡ് ചെയ്യുന്നോ... നിങ്ങൾക്കായി ഒരു കണ്ടം ഒരുക്കിയിട്ടുണ്ട്...   ഒന്ന് ഓടിയിട്ട് വരൂ...")
+        msg.reply_text("You have flooded whole country. It is time to rest..Shh")
 
         return "<b>{}:</b>" \
                "\n#mutED" \
